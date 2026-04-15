@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="440" viewBox="0 0 740 440">
+  <defs>
+    <style>
+      .bg { fill: #030712; }
+      .panel { fill: #111827; }
+      .border { fill: none; stroke: #1f2937; stroke-width: 1; }
+      .mono { font-family: 'SF Mono', 'Fira Code', monospace; }
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+      .key { fill: #c4b5fd; }
+      .str { fill: #4ade80; }
+      .num { fill: #60a5fa; }
+      .bool { fill: #fb923c; }
+      .null { fill: #f87171; }
+      .brace { fill: #9ca3af; }
+      .dim { fill: #4b5563; }
+      .label { fill: #6b7280; font-size: 11px; }
+      .stat-val { fill: #f9fafb; font-weight: 600; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="740" height="440" rx="12" class="bg"/>
+
+  <!-- Top bar -->
+  <rect width="740" height="44" rx="12" class="panel"/>
+  <rect y="22" width="740" height="22" class="panel"/>
+  <text x="24" y="27" class="sans" fill="#f9fafb" font-size="14" font-weight="700">JSONLens</text>
+  <text x="100" y="27" class="sans" fill="#6b7280" font-size="12">Paste JSON. See everything. Instantly.</text>
+
+  <!-- Search bar -->
+  <rect x="480" y="10" width="180" height="24" rx="6" fill="#1f2937"/>
+  <text x="496" y="26" class="sans" fill="#6b7280" font-size="11">Search keys or values...</text>
+  <rect x="668" y="10" width="52" height="24" rx="6" fill="#1f2937"/>
+  <text x="694" y="26" class="sans" fill="#6b7280" font-size="11" text-anchor="middle">Tree</text>
+
+  <!-- Stats bar -->
+  <rect x="0" y="44" width="740" height="24" fill="#0d1117"/>
+  <text x="16" y="59" class="sans label">120 keys</text>
+  <text x="80" y="59" class="sans label">depth: 4</text>
+  <text x="144" y="59" class="sans label">3 arrays</text>
+  <text x="210" y="59" class="sans label">2.4 KB</text>
+
+  <!-- Left panel: JSON input -->
+  <rect x="0" y="68" width="300" height="372" class="panel"/>
+  <rect x="0" y="68" width="300" height="372" class="border"/>
+  <text x="16" y="88" class="sans" fill="#6b7280" font-size="11" font-weight="600">INPUT</text>
+  <text x="16" y="110" class="mono brace" font-size="12">{</text>
+  <text x="28" y="126" class="mono key" font-size="12">"id"</text><text x="68" y="126" class="mono brace" font-size="12">:</text><text x="76" y="126" class="mono num" font-size="12">1</text><text x="84" y="126" class="mono brace" font-size="12">,</text>
+  <text x="28" y="142" class="mono key" font-size="12">"name"</text><text x="84" y="142" class="mono brace" font-size="12">:</text><text x="92" y="142" class="mono str" font-size="12">"Alice Johnson"</text><text x="208" y="142" class="mono brace" font-size="12">,</text>
+  <text x="28" y="158" class="mono key" font-size="12">"active"</text><text x="92" y="158" class="mono brace" font-size="12">:</text><text x="100" y="158" class="mono bool" font-size="12">true</text><text x="128" y="158" class="mono brace" font-size="12">,</text>
+  <text x="28" y="174" class="mono key" font-size="12">"score"</text><text x="84" y="174" class="mono brace" font-size="12">:</text><text x="92" y="174" class="mono num" font-size="12">98.5</text><text x="120" y="174" class="mono brace" font-size="12">,</text>
+  <text x="28" y="190" class="mono key" font-size="12">"tags"</text><text x="76" y="190" class="mono brace" font-size="12">: [</text>
+  <text x="44" y="206" class="mono str" font-size="12">"admin"</text><text x="100" y="206" class="mono brace" font-size="12">,</text>
+  <text x="44" y="222" class="mono str" font-size="12">"superuser"</text>
+  <text x="28" y="238" class="mono brace" font-size="12">],</text>
+  <text x="28" y="254" class="mono key" font-size="12">"address"</text><text x="100" y="254" class="mono brace" font-size="12">: {</text>
+  <text x="44" y="270" class="mono key" font-size="12">"city"</text><text x="84" y="270" class="mono brace" font-size="12">:</text><text x="92" y="270" class="mono str" font-size="12">"San Francisco"</text>
+  <text x="44" y="286" class="mono key" font-size="12">"zip"</text><text x="76" y="286" class="mono brace" font-size="12">:</text><text x="84" y="286" class="mono str" font-size="12">"94105"</text>
+  <text x="28" y="302" class="mono brace" font-size="12">},</text>
+  <text x="28" y="318" class="mono key" font-size="12">"metadata"</text><text x="108" y="318" class="mono brace" font-size="12">: null</text>
+  <text x="16" y="334" class="mono brace" font-size="12">}</text>
+
+  <!-- Divider -->
+  <line x1="300" y1="68" x2="300" y2="440" stroke="#1f2937" stroke-width="1"/>
+
+  <!-- Right panel: Tree view -->
+  <rect x="300" y="68" width="440" height="372" class="panel"/>
+  <text x="316" y="88" class="sans" fill="#6b7280" font-size="11" font-weight="600">TREE VIEW</text>
+  <text x="636" y="88" class="sans" fill="#374151" font-size="11">Expand all  Collapse all</text>
+
+  <!-- Tree nodes -->
+  <text x="316" y="112" class="mono brace" font-size="12">{ } Object</text><text x="400" y="112" class="mono dim" font-size="11">  8 keys</text>
+
+  <!-- id -->
+  <text x="332" y="130" class="mono" fill="#374151" font-size="12">v </text>
+  <text x="348" y="130" class="mono key" font-size="12">id</text>
+  <text x="376" y="130" class="mono brace" font-size="12">:</text>
+  <text x="384" y="130" class="mono num" font-size="12">1</text>
+
+  <!-- name -->
+  <text x="332" y="148" class="mono" fill="#374151" font-size="12">v </text>
+  <text x="348" y="148" class="mono key" font-size="12">name</text>
+  <text x="388" y="148" class="mono brace" font-size="12">:</text>
+  <text x="396" y="148" class="mono str" font-size="12">"Alice Johnson"</text>
+  <!-- Copy path hint -->
+  <rect x="548" y="138" width="80" height="16" rx="3" fill="#1f2937"/>
+  <text x="552" y="149" class="sans" fill="#6b7280" font-size="9">user.name  [copy]</text>
+
+  <!-- active -->
+  <text x="332" y="166" class="mono" fill="#374151" font-size="12">v </text>
+  <text x="348" y="166" class="mono key" font-size="12">active</text>
+  <text x="400" y="166" class="mono brace" font-size="12">:</text>
+  <text x="408" y="166" class="mono bool" font-size="12">true</text>
+
+  <!-- score -->
+  <text x="332" y="184" class="mono" fill="#374151" font-size="12">v </text>
+  <text x="348" y="184" class="mono key" font-size="12">score</text>
+  <text x="396" y="184" class="mono brace" font-size="12">:</text>
+  <text x="404" y="184" class="mono num" font-size="12">98.5</text>
+
+  <!-- tags -->
+  <text x="332" y="202" class="mono" fill="#374151" font-size="12">+ </text>
+  <text x="348" y="202" class="mono key" font-size="12">tags</text>
+  <text x="380" y="202" class="mono brace" font-size="12">:</text>
+  <text x="388" y="202" class="mono brace" font-size="12">[ ] Array</text>
+  <text x="468" y="202" class="mono dim" font-size="11">  2 items</text>
+
+  <!-- address (expanded) -->
+  <text x="332" y="220" class="mono" fill="#374151" font-size="12">- </text>
+  <text x="348" y="220" class="mono key" font-size="12">address</text>
+  <text x="404" y="220" class="mono brace" font-size="12">:</text>
+  <text x="412" y="220" class="mono brace" font-size="12">{ } Object</text>
+  <text x="492" y="220" class="mono dim" font-size="11">  2 keys</text>
+
+  <text x="360" y="238" class="mono" fill="#374151" font-size="12">v </text>
+  <text x="376" y="238" class="mono key" font-size="12">city</text>
+  <text x="408" y="238" class="mono brace" font-size="12">:</text>
+  <text x="416" y="238" class="mono str" font-size="12">"San Francisco"</text>
+
+  <text x="360" y="256" class="mono" fill="#374151" font-size="12">v </text>
+  <text x="376" y="256" class="mono key" font-size="12">zip</text>
+  <text x="404" y="256" class="mono brace" font-size="12">:</text>
+  <text x="412" y="256" class="mono str" font-size="12">"94105"</text>
+
+  <!-- metadata null -->
+  <text x="332" y="274" class="mono" fill="#374151" font-size="12">v </text>
+  <text x="348" y="274" class="mono key" font-size="12">metadata</text>
+  <text x="412" y="274" class="mono brace" font-size="12">:</text>
+  <text x="420" y="274" class="mono null" font-size="12">null</text>
+
+  <!-- Legend -->
+  <rect x="316" y="300" width="400" height="60" rx="6" fill="#0d1117"/>
+  <text x="332" y="318" class="sans" fill="#6b7280" font-size="10" font-weight="600">COLOR KEY</text>
+  <rect x="332" y="326" width="8" height="8" rx="2" fill="#c4b5fd"/>
+  <text x="344" y="334" class="sans" fill="#9ca3af" font-size="10">key</text>
+  <rect x="378" y="326" width="8" height="8" rx="2" fill="#4ade80"/>
+  <text x="390" y="334" class="sans" fill="#9ca3af" font-size="10">string</text>
+  <rect x="434" y="326" width="8" height="8" rx="2" fill="#60a5fa"/>
+  <text x="446" y="334" class="sans" fill="#9ca3af" font-size="10">number</text>
+  <rect x="500" y="326" width="8" height="8" rx="2" fill="#fb923c"/>
+  <text x="512" y="334" class="sans" fill="#9ca3af" font-size="10">boolean</text>
+  <rect x="564" y="326" width="8" height="8" rx="2" fill="#f87171"/>
+  <text x="576" y="334" class="sans" fill="#9ca3af" font-size="10">null</text>
+  <text x="332" y="352" class="sans" fill="#6b7280" font-size="10">Click any key to copy its dot-notation path  ·  Search filters the entire tree</text>
+</svg>
