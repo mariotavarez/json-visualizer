@@ -1,145 +1,174 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="740" height="440" viewBox="0 0 740 440">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480">
   <defs>
-    <style>
-      .bg { fill: #030712; }
-      .panel { fill: #111827; }
-      .border { fill: none; stroke: #1f2937; stroke-width: 1; }
-      .mono { font-family: 'SF Mono', 'Fira Code', monospace; }
-      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-      .key { fill: #c4b5fd; }
-      .str { fill: #4ade80; }
-      .num { fill: #60a5fa; }
-      .bool { fill: #fb923c; }
-      .null { fill: #f87171; }
-      .brace { fill: #9ca3af; }
-      .dim { fill: #4b5563; }
-      .label { fill: #6b7280; font-size: 11px; }
-      .stat-val { fill: #f9fafb; font-weight: 600; }
-    </style>
+    <linearGradient id="appBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#0d0d14"/>
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141420"/>
+      <stop offset="100%" stop-color="#111118"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="panelShadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#ffffff08"/>
+    </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="740" height="440" rx="12" class="bg"/>
+  <!-- Browser chrome - dark -->
+  <rect width="800" height="480" rx="12" fill="#1c1c24"/>
+  <rect width="800" height="36" rx="12" fill="#252530"/>
+  <rect y="24" width="800" height="12" fill="#252530"/>
+  <circle cx="20" cy="18" r="5.5" fill="#ff5f57"/>
+  <circle cx="38" cy="18" r="5.5" fill="#febc2e"/>
+  <circle cx="56" cy="18" r="5.5" fill="#28c840"/>
+  <!-- Address bar -->
+  <rect x="152" y="8" width="496" height="20" rx="10" fill="#1a1a22"/>
+  <rect x="152" y="8" width="496" height="20" rx="10" fill="none" stroke="#2a2a38" stroke-width="1"/>
+  <text x="220" y="22" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#4b5280">localhost:5173</text>
+  <!-- Tabs -->
+  <rect x="80" y="6" width="64" height="22" rx="6" fill="#141420"/>
+  <text x="112" y="21" font-family="-apple-system, sans-serif" font-size="10" fill="#818cf8" text-anchor="middle">JSONLens</text>
 
-  <!-- Top bar -->
-  <rect width="740" height="44" rx="12" class="panel"/>
-  <rect y="22" width="740" height="22" class="panel"/>
-  <text x="24" y="27" class="sans" fill="#f9fafb" font-size="14" font-weight="700">JSONLens</text>
-  <text x="100" y="27" class="sans" fill="#6b7280" font-size="12">Paste JSON. See everything. Instantly.</text>
+  <!-- App background -->
+  <rect y="36" width="800" height="444" fill="url(#appBg)"/>
 
-  <!-- Search bar -->
-  <rect x="480" y="10" width="180" height="24" rx="6" fill="#1f2937"/>
-  <text x="496" y="26" class="sans" fill="#6b7280" font-size="11">Search keys or values...</text>
-  <rect x="668" y="10" width="52" height="24" rx="6" fill="#1f2937"/>
-  <text x="694" y="26" class="sans" fill="#6b7280" font-size="11" text-anchor="middle">Tree</text>
+  <!-- Top toolbar -->
+  <rect y="36" width="800" height="44" fill="#0f0f1a"/>
+  <rect y="79" width="800" height="1" fill="#1e1e2e"/>
+  <!-- Logo -->
+  <rect x="20" y="48" width="24" height="24" rx="6" fill="url(#accentGrad)"/>
+  <text x="32" y="64" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">{}</text>
+  <text x="54" y="63" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#e2e8f0">JSONLens</text>
+  <!-- Toolbar right -->
+  <rect x="512" y="48" width="152" height="24" rx="6" fill="#1a1a26"/>
+  <rect x="512" y="48" width="152" height="24" rx="6" fill="none" stroke="#2a2a38" stroke-width="1"/>
+  <text x="528" y="64" font-family="'SF Mono', monospace" font-size="11" fill="#4b5280">Search keys or values</text>
+  <!-- Stats chips -->
+  <rect x="676" y="48" width="52" height="24" rx="12" fill="#1a1a26"/>
+  <rect x="676" y="48" width="52" height="24" rx="12" fill="none" stroke="#2a2a38" stroke-width="1"/>
+  <text x="702" y="64" font-family="-apple-system, sans-serif" font-size="10" fill="#6366f1" text-anchor="middle">Tree</text>
+  <rect x="736" y="48" width="44" height="24" rx="12" fill="#1e1e2e"/>
+  <text x="758" y="64" font-family="-apple-system, sans-serif" font-size="10" fill="#4b5280" text-anchor="middle">Raw</text>
 
   <!-- Stats bar -->
-  <rect x="0" y="44" width="740" height="24" fill="#0d1117"/>
-  <text x="16" y="59" class="sans label">120 keys</text>
-  <text x="80" y="59" class="sans label">depth: 4</text>
-  <text x="144" y="59" class="sans label">3 arrays</text>
-  <text x="210" y="59" class="sans label">2.4 KB</text>
+  <rect y="80" width="800" height="24" fill="#09090f"/>
+  <text x="20" y="96" font-family="'SF Mono', monospace" font-size="10" fill="#3d3d5c">120 keys</text>
+  <text x="80" y="96" font-family="'SF Mono', monospace" font-size="10" fill="#3d3d5c">·</text>
+  <text x="92" y="96" font-family="'SF Mono', monospace" font-size="10" fill="#3d3d5c">depth 4</text>
+  <text x="148" y="96" font-family="'SF Mono', monospace" font-size="10" fill="#3d3d5c">·</text>
+  <text x="160" y="96" font-family="'SF Mono', monospace" font-size="10" fill="#3d3d5c">3 arrays</text>
+  <text x="220" y="96" font-family="'SF Mono', monospace" font-size="10" fill="#3d3d5c">·</text>
+  <text x="232" y="96" font-family="'SF Mono', monospace" font-size="10" fill="#3d3d5c">2.4 KB</text>
+  <text x="680" y="96" font-family="-apple-system, sans-serif" font-size="10" fill="#2a2a3c">Expand all  ·  Collapse all</text>
 
-  <!-- Left panel: JSON input -->
-  <rect x="0" y="68" width="300" height="372" class="panel"/>
-  <rect x="0" y="68" width="300" height="372" class="border"/>
-  <text x="16" y="88" class="sans" fill="#6b7280" font-size="11" font-weight="600">INPUT</text>
-  <text x="16" y="110" class="mono brace" font-size="12">{</text>
-  <text x="28" y="126" class="mono key" font-size="12">"id"</text><text x="68" y="126" class="mono brace" font-size="12">:</text><text x="76" y="126" class="mono num" font-size="12">1</text><text x="84" y="126" class="mono brace" font-size="12">,</text>
-  <text x="28" y="142" class="mono key" font-size="12">"name"</text><text x="84" y="142" class="mono brace" font-size="12">:</text><text x="92" y="142" class="mono str" font-size="12">"Alice Johnson"</text><text x="208" y="142" class="mono brace" font-size="12">,</text>
-  <text x="28" y="158" class="mono key" font-size="12">"active"</text><text x="92" y="158" class="mono brace" font-size="12">:</text><text x="100" y="158" class="mono bool" font-size="12">true</text><text x="128" y="158" class="mono brace" font-size="12">,</text>
-  <text x="28" y="174" class="mono key" font-size="12">"score"</text><text x="84" y="174" class="mono brace" font-size="12">:</text><text x="92" y="174" class="mono num" font-size="12">98.5</text><text x="120" y="174" class="mono brace" font-size="12">,</text>
-  <text x="28" y="190" class="mono key" font-size="12">"tags"</text><text x="76" y="190" class="mono brace" font-size="12">: [</text>
-  <text x="44" y="206" class="mono str" font-size="12">"admin"</text><text x="100" y="206" class="mono brace" font-size="12">,</text>
-  <text x="44" y="222" class="mono str" font-size="12">"superuser"</text>
-  <text x="28" y="238" class="mono brace" font-size="12">],</text>
-  <text x="28" y="254" class="mono key" font-size="12">"address"</text><text x="100" y="254" class="mono brace" font-size="12">: {</text>
-  <text x="44" y="270" class="mono key" font-size="12">"city"</text><text x="84" y="270" class="mono brace" font-size="12">:</text><text x="92" y="270" class="mono str" font-size="12">"San Francisco"</text>
-  <text x="44" y="286" class="mono key" font-size="12">"zip"</text><text x="76" y="286" class="mono brace" font-size="12">:</text><text x="84" y="286" class="mono str" font-size="12">"94105"</text>
-  <text x="28" y="302" class="mono brace" font-size="12">},</text>
-  <text x="28" y="318" class="mono key" font-size="12">"metadata"</text><text x="108" y="318" class="mono brace" font-size="12">: null</text>
-  <text x="16" y="334" class="mono brace" font-size="12">}</text>
+  <!-- Left panel (input) -->
+  <rect x="0" y="104" width="264" height="376" fill="#0b0b14"/>
+  <rect x="264" y="104" width="1" height="376" fill="#1a1a26"/>
+  <text x="16" y="124" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" fill="#3d3d5c" letter-spacing="1">INPUT</text>
+  <!-- JSON text with syntax highlighting -->
+  <text x="16" y="144" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">{</text>
+  <text x="28" y="160" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">"id"</text><text x="64" y="160" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">:</text><text x="72" y="160" font-family="'SF Mono', monospace" font-size="11.5" fill="#38bdf8">1</text><text x="80" y="160" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">,</text>
+  <text x="28" y="176" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">"name"</text><text x="88" y="176" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">:</text><text x="96" y="176" font-family="'SF Mono', monospace" font-size="11.5" fill="#4ade80">"Alice Johnson"</text>
+  <text x="28" y="192" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">"active"</text><text x="96" y="192" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">:</text><text x="104" y="192" font-family="'SF Mono', monospace" font-size="11.5" fill="#fb923c">true</text>
+  <text x="28" y="208" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">"score"</text><text x="88" y="208" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">:</text><text x="96" y="208" font-family="'SF Mono', monospace" font-size="11.5" fill="#38bdf8">98.5</text>
+  <text x="28" y="224" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">"tags"</text><text x="80" y="224" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">: [</text>
+  <text x="44" y="240" font-family="'SF Mono', monospace" font-size="11.5" fill="#4ade80">"admin"</text><text x="104" y="240" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">,</text>
+  <text x="44" y="256" font-family="'SF Mono', monospace" font-size="11.5" fill="#4ade80">"superuser"</text>
+  <text x="28" y="272" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">],</text>
+  <text x="28" y="288" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">"address"</text><text x="100" y="288" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">: {</text>
+  <text x="44" y="304" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">"city"</text><text x="84" y="304" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">:</text><text x="92" y="304" font-family="'SF Mono', monospace" font-size="11.5" fill="#4ade80">"San Francisco"</text>
+  <text x="44" y="320" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">"zip"</text><text x="76" y="320" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">:</text><text x="84" y="320" font-family="'SF Mono', monospace" font-size="11.5" fill="#4ade80">"94105"</text>
+  <text x="28" y="336" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">},</text>
+  <text x="28" y="352" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">"metadata"</text><text x="108" y="352" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">:</text><text x="116" y="352" font-family="'SF Mono', monospace" font-size="11.5" fill="#f87171">null</text>
+  <text x="16" y="368" font-family="'SF Mono', monospace" font-size="11.5" fill="#4b5280">}</text>
+  <!-- Cursor blink -->
+  <rect x="24" y="371" width="2" height="14" fill="#6366f1" opacity="0.9"/>
 
-  <!-- Divider -->
-  <line x1="300" y1="68" x2="300" y2="440" stroke="#1f2937" stroke-width="1"/>
+  <!-- Right panel (tree) -->
+  <rect x="265" y="104" width="535" height="376" fill="url(#panelGrad)"/>
 
-  <!-- Right panel: Tree view -->
-  <rect x="300" y="68" width="440" height="372" class="panel"/>
-  <text x="316" y="88" class="sans" fill="#6b7280" font-size="11" font-weight="600">TREE VIEW</text>
-  <text x="636" y="88" class="sans" fill="#374151" font-size="11">Expand all  Collapse all</text>
+  <!-- Tree root -->
+  <rect x="280" y="112" width="506" height="28" rx="6" fill="#141420"/>
+  <text x="296" y="130" font-family="-apple-system, sans-serif" font-size="11" fill="#4b5280">▼</text>
+  <text x="314" y="130" font-family="'SF Mono', monospace" font-size="12" fill="#94a3b8">{ }</text>
+  <text x="336" y="130" font-family="-apple-system, sans-serif" font-size="11" fill="#3d3d5c">Object</text>
+  <rect x="700" y="116" width="36" height="18" rx="9" fill="#1e1e30"/>
+  <text x="718" y="128" font-family="-apple-system, sans-serif" font-size="9" fill="#4b5280" text-anchor="middle">8 keys</text>
 
-  <!-- Tree nodes -->
-  <text x="316" y="112" class="mono brace" font-size="12">{ } Object</text><text x="400" y="112" class="mono dim" font-size="11">  8 keys</text>
-
+  <!-- Tree items -->
   <!-- id -->
-  <text x="332" y="130" class="mono" fill="#374151" font-size="12">v </text>
-  <text x="348" y="130" class="mono key" font-size="12">id</text>
-  <text x="376" y="130" class="mono brace" font-size="12">:</text>
-  <text x="384" y="130" class="mono num" font-size="12">1</text>
+  <rect x="296" y="146" width="490" height="22" rx="4" fill="transparent"/>
+  <text x="308" y="161" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">id</text>
+  <text x="330" y="161" font-family="'SF Mono', monospace" font-size="11.5" fill="#374151">:</text>
+  <text x="342" y="161" font-family="'SF Mono', monospace" font-size="11.5" fill="#38bdf8">1</text>
 
-  <!-- name -->
-  <text x="332" y="148" class="mono" fill="#374151" font-size="12">v </text>
-  <text x="348" y="148" class="mono key" font-size="12">name</text>
-  <text x="388" y="148" class="mono brace" font-size="12">:</text>
-  <text x="396" y="148" class="mono str" font-size="12">"Alice Johnson"</text>
-  <!-- Copy path hint -->
-  <rect x="548" y="138" width="80" height="16" rx="3" fill="#1f2937"/>
-  <text x="552" y="149" class="sans" fill="#6b7280" font-size="9">user.name  [copy]</text>
+  <!-- name (highlighted row) -->
+  <rect x="296" y="170" width="490" height="22" rx="4" fill="#1a1a28"/>
+  <text x="308" y="185" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">name</text>
+  <text x="346" y="185" font-family="'SF Mono', monospace" font-size="11.5" fill="#374151">:</text>
+  <text x="358" y="185" font-family="'SF Mono', monospace" font-size="11.5" fill="#4ade80">"Alice Johnson"</text>
+  <!-- Path tooltip -->
+  <rect x="506" y="172" width="100" height="18" rx="5" fill="#1e1e35"/>
+  <rect x="506" y="172" width="100" height="18" rx="5" fill="none" stroke="#2d2d50" stroke-width="1"/>
+  <text x="512" y="184" font-family="'SF Mono', monospace" font-size="9" fill="#6366f1">user.name  ⎘</text>
 
   <!-- active -->
-  <text x="332" y="166" class="mono" fill="#374151" font-size="12">v </text>
-  <text x="348" y="166" class="mono key" font-size="12">active</text>
-  <text x="400" y="166" class="mono brace" font-size="12">:</text>
-  <text x="408" y="166" class="mono bool" font-size="12">true</text>
+  <text x="308" y="209" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">active</text>
+  <text x="354" y="209" font-family="'SF Mono', monospace" font-size="11.5" fill="#374151">:</text>
+  <text x="366" y="209" font-family="'SF Mono', monospace" font-size="11.5" fill="#fb923c">true</text>
 
   <!-- score -->
-  <text x="332" y="184" class="mono" fill="#374151" font-size="12">v </text>
-  <text x="348" y="184" class="mono key" font-size="12">score</text>
-  <text x="396" y="184" class="mono brace" font-size="12">:</text>
-  <text x="404" y="184" class="mono num" font-size="12">98.5</text>
+  <text x="308" y="229" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">score</text>
+  <text x="350" y="229" font-family="'SF Mono', monospace" font-size="11.5" fill="#374151">:</text>
+  <text x="362" y="229" font-family="'SF Mono', monospace" font-size="11.5" fill="#38bdf8">98.5</text>
 
-  <!-- tags -->
-  <text x="332" y="202" class="mono" fill="#374151" font-size="12">+ </text>
-  <text x="348" y="202" class="mono key" font-size="12">tags</text>
-  <text x="380" y="202" class="mono brace" font-size="12">:</text>
-  <text x="388" y="202" class="mono brace" font-size="12">[ ] Array</text>
-  <text x="468" y="202" class="mono dim" font-size="11">  2 items</text>
+  <!-- tags (collapsed) -->
+  <rect x="296" y="236" width="490" height="22" rx="4" fill="transparent"/>
+  <text x="308" y="251" font-family="-apple-system, sans-serif" font-size="11" fill="#374151">▶</text>
+  <text x="324" y="251" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">tags</text>
+  <text x="354" y="251" font-family="'SF Mono', monospace" font-size="11.5" fill="#374151">:</text>
+  <text x="366" y="251" font-family="'SF Mono', monospace" font-size="11.5" fill="#64748b">[ ] Array</text>
+  <rect x="450" y="239" width="44" height="16" rx="8" fill="#1e1e30"/>
+  <text x="472" y="250" font-family="-apple-system, sans-serif" font-size="9" fill="#4b5280" text-anchor="middle">2 items</text>
 
   <!-- address (expanded) -->
-  <text x="332" y="220" class="mono" fill="#374151" font-size="12">- </text>
-  <text x="348" y="220" class="mono key" font-size="12">address</text>
-  <text x="404" y="220" class="mono brace" font-size="12">:</text>
-  <text x="412" y="220" class="mono brace" font-size="12">{ } Object</text>
-  <text x="492" y="220" class="mono dim" font-size="11">  2 keys</text>
-
-  <text x="360" y="238" class="mono" fill="#374151" font-size="12">v </text>
-  <text x="376" y="238" class="mono key" font-size="12">city</text>
-  <text x="408" y="238" class="mono brace" font-size="12">:</text>
-  <text x="416" y="238" class="mono str" font-size="12">"San Francisco"</text>
-
-  <text x="360" y="256" class="mono" fill="#374151" font-size="12">v </text>
-  <text x="376" y="256" class="mono key" font-size="12">zip</text>
-  <text x="404" y="256" class="mono brace" font-size="12">:</text>
-  <text x="412" y="256" class="mono str" font-size="12">"94105"</text>
+  <text x="308" y="275" font-family="-apple-system, sans-serif" font-size="11" fill="#374151">▼</text>
+  <text x="324" y="275" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">address</text>
+  <text x="382" y="275" font-family="'SF Mono', monospace" font-size="11.5" fill="#374151">:</text>
+  <text x="394" y="275" font-family="'SF Mono', monospace" font-size="11.5" fill="#64748b">{ } Object</text>
+  <!-- indent line -->
+  <line x1="320" y1="280" x2="320" y2="316" stroke="#2a2a40" stroke-width="1"/>
+  <text x="336" y="297" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">city</text>
+  <text x="360" y="297" font-family="'SF Mono', monospace" font-size="11.5" fill="#374151">:</text>
+  <text x="372" y="297" font-family="'SF Mono', monospace" font-size="11.5" fill="#4ade80">"San Francisco"</text>
+  <text x="336" y="316" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">zip</text>
+  <text x="356" y="316" font-family="'SF Mono', monospace" font-size="11.5" fill="#374151">:</text>
+  <text x="368" y="316" font-family="'SF Mono', monospace" font-size="11.5" fill="#4ade80">"94105"</text>
 
   <!-- metadata null -->
-  <text x="332" y="274" class="mono" fill="#374151" font-size="12">v </text>
-  <text x="348" y="274" class="mono key" font-size="12">metadata</text>
-  <text x="412" y="274" class="mono brace" font-size="12">:</text>
-  <text x="420" y="274" class="mono null" font-size="12">null</text>
+  <text x="308" y="338" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">metadata</text>
+  <text x="372" y="338" font-family="'SF Mono', monospace" font-size="11.5" fill="#374151">:</text>
+  <text x="384" y="338" font-family="'SF Mono', monospace" font-size="11.5" fill="#f87171">null</text>
 
-  <!-- Legend -->
-  <rect x="316" y="300" width="400" height="60" rx="6" fill="#0d1117"/>
-  <text x="332" y="318" class="sans" fill="#6b7280" font-size="10" font-weight="600">COLOR KEY</text>
-  <rect x="332" y="326" width="8" height="8" rx="2" fill="#c4b5fd"/>
-  <text x="344" y="334" class="sans" fill="#9ca3af" font-size="10">key</text>
-  <rect x="378" y="326" width="8" height="8" rx="2" fill="#4ade80"/>
-  <text x="390" y="334" class="sans" fill="#9ca3af" font-size="10">string</text>
-  <rect x="434" y="326" width="8" height="8" rx="2" fill="#60a5fa"/>
-  <text x="446" y="334" class="sans" fill="#9ca3af" font-size="10">number</text>
-  <rect x="500" y="326" width="8" height="8" rx="2" fill="#fb923c"/>
-  <text x="512" y="334" class="sans" fill="#9ca3af" font-size="10">boolean</text>
-  <rect x="564" y="326" width="8" height="8" rx="2" fill="#f87171"/>
-  <text x="576" y="334" class="sans" fill="#9ca3af" font-size="10">null</text>
-  <text x="332" y="352" class="sans" fill="#6b7280" font-size="10">Click any key to copy its dot-notation path  ·  Search filters the entire tree</text>
+  <!-- Color legend -->
+  <rect x="280" y="364" width="506" height="42" rx="8" fill="#09090f"/>
+  <rect x="280" y="364" width="506" height="42" rx="8" fill="none" stroke="#1a1a28" stroke-width="1"/>
+  <rect x="296" y="374" width="8" height="8" rx="2" fill="#818cf8"/>
+  <text x="308" y="382" font-family="-apple-system, sans-serif" font-size="10" fill="#4b5280">keys</text>
+  <rect x="344" y="374" width="8" height="8" rx="2" fill="#4ade80"/>
+  <text x="356" y="382" font-family="-apple-system, sans-serif" font-size="10" fill="#4b5280">strings</text>
+  <rect x="400" y="374" width="8" height="8" rx="2" fill="#38bdf8"/>
+  <text x="412" y="382" font-family="-apple-system, sans-serif" font-size="10" fill="#4b5280">numbers</text>
+  <rect x="464" y="374" width="8" height="8" rx="2" fill="#fb923c"/>
+  <text x="476" y="382" font-family="-apple-system, sans-serif" font-size="10" fill="#4b5280">booleans</text>
+  <rect x="532" y="374" width="8" height="8" rx="2" fill="#f87171"/>
+  <text x="544" y="382" font-family="-apple-system, sans-serif" font-size="10" fill="#4b5280">null</text>
+  <text x="296" y="398" font-family="-apple-system, sans-serif" font-size="10" fill="#2d2d48">Click any key to copy its dot-notation path  ·  Search highlights matching nodes across the full tree</text>
 </svg>
